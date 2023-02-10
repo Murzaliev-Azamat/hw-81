@@ -23,9 +23,20 @@ linksRouter.get('/:shortUrl', async (req, res) => {
 linksRouter.post('/links', async (req, res) => {
   const abc = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
   let randomString = "";
-  while (randomString.length < 7) {
-    randomString += abc[Math.floor(Math.random() * abc.length)];
-  }
+
+    while (randomString.length < 7) {
+      randomString += abc[Math.floor(Math.random() * abc.length)];
+    }
+
+  const result = await Link.findOne({shortUrl: 'gDasd'});
+
+    if (result) {
+      while (result.shortUrl === randomString){
+        while (randomString.length < 7) {
+          randomString += abc[Math.floor(Math.random() * abc.length)];
+        }
+      }
+    }
 
   try {
     const linkData: LinkWithoutId = {
