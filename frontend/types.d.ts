@@ -1,25 +1,19 @@
-export interface OneNews {
+export interface Link {
   id: number;
-  title: string;
-  info: string;
-  image: string | null;
+  url: string;
 }
 
-export interface OneNewsApi {
-  title: string;
-  info: string;
-  image: File | null;
+export interface LinkApi {
+  url: string;
 }
 
-export interface Comment {
-  id: number;
-  news_id: number;
-  author: string;
-  message: string;
+export interface LinkResponse {
+  shortUrl: string;
+  url: string;
+  __v: number;
+  _id: string
 }
 
-export interface CommentApi {
-  news_id: number;
-  author: string;
-  message: string;
+export interface LinkWithShortUrl {
+  shortUrl: string;
 }

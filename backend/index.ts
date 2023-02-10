@@ -1,8 +1,7 @@
 import cors from 'cors';
 import express from 'express';
-import newsRouter from "./routers/news";
-import commentRouter from "./routers/comments";
-import mysqlDb from "./mysqlDB";
+import mongoose from 'mongoose';
+import linksRouter from "./routers/links";
 
 const app = express();
 const port = 8000;
@@ -10,15 +9,22 @@ const port = 8000;
 app.use(cors());
 app.use(express.static('public'));
 app.use(express.json());
-app.use('/news', newsRouter);
-app.use('/comments', commentRouter);
+app.use('', linksRouter);
 
 const run = async () => {
-  await mysqlDb.init();
+  mongoose.set('strictQuery', false);
+  await mongoose.connect('mongodb://localhost/hw_81');
 
   app.listen(port, () => {
     console.log('We are live on ' + port);
   });
+
+
+  process.on('exit', () => {
+    mongoose.disconnect();
+  });
 };
+
+
 
 run().catch(console.error);

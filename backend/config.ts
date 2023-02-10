@@ -5,12 +5,6 @@ const rootPath = __dirname;
 const config = {
   rootPath,
   publicPath: path.join(rootPath, 'public'),
-  db: {
-    host:'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'azamat_cw_10'
-  }
 };
 
 export default config;
