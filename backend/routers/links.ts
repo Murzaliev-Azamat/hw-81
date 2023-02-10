@@ -13,7 +13,6 @@ linksRouter.get('/:shortUrl', async (req, res) => {
     }
 
     return res.status(301).redirect(result.url)
-    // return res.send(result);
   } catch {
     return res.sendStatus(500);
   }

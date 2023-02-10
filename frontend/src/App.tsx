@@ -4,9 +4,6 @@ import Links from './features/links/Links';
 
 function App() {
 
-
-
-
   return (
     <div className="App">
       <Links/>
